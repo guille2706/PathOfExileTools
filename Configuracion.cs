@@ -183,49 +183,16 @@ namespace SandBox
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
-            
+
+            textBoxAwake.Text= BuscarPath();
           
-            string rutaArchivo = string.Empty;
-
-            using (OpenFileDialog openFileDialog1 = new OpenFileDialog()) ;
-
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "Ver todos los Archivos (*.*)|*.*|Ejecutables (*.exe)|*.exe";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) 
-            {
-                
-                textBoxAwake.Text = openFileDialog1.FileName;
-
-
             
-            }
-          
 
         }
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            string rutaArchivo = string.Empty;
-
-            using (OpenFileDialog openFileDialog1 = new OpenFileDialog()) ;
-
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "Ver todos los Archivos (*.*)|*.*|Ejecutables (*.exe)|*.exe";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-
-                textBoxCompanion.Text = openFileDialog1.FileName;
-
-
-
-            }
+            textBoxCompanion.Text= BuscarPath();
 
 
 
@@ -233,6 +200,14 @@ namespace SandBox
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            textBoxExilence.Text = BuscarPath();
+
+
+
+        }
+
+        public string  BuscarPath() 
+        {
             string rutaArchivo = string.Empty;
 
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog()) ;
@@ -245,14 +220,14 @@ namespace SandBox
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-                textBoxExilence.Text = openFileDialog1.FileName;
-
+                //textBoxExilence.Text = openFileDialog1.FileName;
+                return rutaArchivo = openFileDialog1.FileName;
 
 
             }
-
-
+            return rutaArchivo;
 
         }
+
     }
 }
