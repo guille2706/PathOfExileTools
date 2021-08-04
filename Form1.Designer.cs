@@ -59,6 +59,7 @@ namespace SandBox
             this.btnLupaMenos = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnNoZoom = new System.Windows.Forms.Button();
+            this.btn_Bloquear = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panelBotones.SuspendLayout();
             this.panelConfig.SuspendLayout();
@@ -75,7 +76,7 @@ namespace SandBox
             this.panelNavegador.AutoSize = true;
             this.panelNavegador.Location = new System.Drawing.Point(12, 127);
             this.panelNavegador.Name = "panelNavegador";
-            this.panelNavegador.Size = new System.Drawing.Size(1064, 342);
+            this.panelNavegador.Size = new System.Drawing.Size(1240, 342);
             this.panelNavegador.TabIndex = 0;
             // 
             // textBoxNav
@@ -85,7 +86,7 @@ namespace SandBox
             this.textBoxNav.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNav.Location = new System.Drawing.Point(8, 10);
             this.textBoxNav.Name = "textBoxNav";
-            this.textBoxNav.Size = new System.Drawing.Size(685, 26);
+            this.textBoxNav.Size = new System.Drawing.Size(861, 26);
             this.textBoxNav.TabIndex = 0;
             this.textBoxNav.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBoxNav.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
@@ -171,6 +172,7 @@ namespace SandBox
             // 
             // panelBotones
             // 
+            this.panelBotones.Controls.Add(this.btn_Bloquear);
             this.panelBotones.Controls.Add(this.btnLogros);
             this.panelBotones.Controls.Add(this.btnLab);
             this.panelBotones.Controls.Add(this.btnActos);
@@ -184,7 +186,7 @@ namespace SandBox
             this.panelBotones.Controls.Add(this.btnTrade);
             this.panelBotones.Location = new System.Drawing.Point(12, 65);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(884, 41);
+            this.panelBotones.Size = new System.Drawing.Size(1052, 41);
             this.panelBotones.TabIndex = 3;
             // 
             // btnLogros
@@ -332,7 +334,7 @@ namespace SandBox
             // 
             this.panelConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConfig.Controls.Add(this.button7);
-            this.panelConfig.Location = new System.Drawing.Point(1019, 16);
+            this.panelConfig.Location = new System.Drawing.Point(1195, 16);
             this.panelConfig.Name = "panelConfig";
             this.panelConfig.Size = new System.Drawing.Size(57, 40);
             this.panelConfig.TabIndex = 13;
@@ -344,7 +346,7 @@ namespace SandBox
             this.panel1.Controls.Add(this.textBoxNav);
             this.panel1.Location = new System.Drawing.Point(212, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 47);
+            this.panel1.Size = new System.Drawing.Size(883, 47);
             this.panel1.TabIndex = 14;
             // 
             // panel3
@@ -352,7 +354,7 @@ namespace SandBox
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(925, 12);
+            this.panel3.Location = new System.Drawing.Point(1101, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(86, 45);
             this.panel3.TabIndex = 7;
@@ -387,7 +389,7 @@ namespace SandBox
             this.panel4.Controls.Add(this.btnLupaMenos);
             this.panel4.Controls.Add(this.btnNoZoom);
             this.panel4.Controls.Add(this.btnLupaMas);
-            this.panel4.Location = new System.Drawing.Point(904, 63);
+            this.panel4.Location = new System.Drawing.Point(1080, 63);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(161, 61);
             this.panel4.TabIndex = 0;
@@ -404,11 +406,24 @@ namespace SandBox
             this.btnNoZoom.UseVisualStyleBackColor = true;
             this.btnNoZoom.Click += new System.EventHandler(this.btnNoZoom_Click);
             // 
+            // btn_Bloquear
+            // 
+            this.btn_Bloquear.BackColor = System.Drawing.Color.Red;
+            this.btn_Bloquear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Bloquear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_Bloquear.Location = new System.Drawing.Point(943, 0);
+            this.btn_Bloquear.Name = "btn_Bloquear";
+            this.btn_Bloquear.Size = new System.Drawing.Size(73, 35);
+            this.btn_Bloquear.TabIndex = 15;
+            this.btn_Bloquear.Text = "Block";
+            this.btn_Bloquear.UseVisualStyleBackColor = false;
+            this.btn_Bloquear.Click += new System.EventHandler(this.btn_Bloquear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1088, 481);
+            this.ClientSize = new System.Drawing.Size(1264, 481);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -469,6 +484,7 @@ namespace SandBox
         private System.Windows.Forms.Button btnLupaMenos;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnNoZoom;
+        private System.Windows.Forms.Button btn_Bloquear;
     }
 }
 

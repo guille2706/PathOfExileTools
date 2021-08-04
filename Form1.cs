@@ -12,8 +12,9 @@ using CefSharp;
 using CefSharp.WinForms;
 using CefSharp.WinForms.Internals;
 using System.Diagnostics;
-
-
+using HtmlAgilityPack;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
+using mshtml;
 
 namespace SandBox
 {
@@ -117,17 +118,43 @@ namespace SandBox
                  this.Text = _text;
                  textBoxNav.Text = _text;
                 
+                
 
 
             try
             {
+           
+
 
                 // datos ok, entonces navegar
-            
+               
+                 
                 navegador.Load(_text);
                 this.Text = _text;
                 textBoxNav.Text = _text;
-                
+
+                // Quitar la publicidad
+
+                /*
+
+
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument document = web.Load("https://pathofexile.fandom.com/wiki/Vendor_recipe_system"); //carga la pagina en la variable document
+
+                var htmlBody = document.DocumentNode.SelectSingleNode("//div[@id='ds_ad_container']");
+                HtmlNode nodo = htmlBody;
+                nodo.RemoveAll();
+
+                // HtmlNode nodos = document.DocumentNode.SelectNodes("//div[@id='rail-boxad-wrapper']").First();
+
+
+
+                */
+
+
+                //fin de quitar la publicidad
+
+
             }
             catch (System.UriFormatException)
             {
@@ -314,6 +341,69 @@ namespace SandBox
         {
             medida--;
             navegador.SetZoomLevel(medida);
+        }
+
+        private void btn_Bloquear_Click(object sender, EventArgs e)
+        {
+            // bloquear publicidad
+
+            InyectarJava();
+        }
+
+        private void InyectarJava()
+        {
+            try
+            {
+                //Utilizao Jquery, creo que por eso usa el signo $, lo que hago aca es cargar
+                // la linea de comando en un string y luego ejecutarla (es una posibilidad de Cefsharp: executeScriptAsync
+                string script = "$('.top-ads-container').remove()";
+               
+                // otra publicidad:
+                string script1 = "$('.rail-module').remove()";
+              
+                string script2 = "$('.WikiaBarWrapper').remove()";
+               
+                string s3 = "$('.notifications-placeholder').remove()";
+                string s4 = "$('.ds_hidemute').remove()";
+                string s5 = "$('.mcf-wrapper').remove()";
+                string id = "var el = document.getElementById('google_center_div')";
+                string s6 = "$('.dm-ad-content').remove()";
+                string s7 = "$('.gpt-ad hide)´.remove()";
+                string s8 = "$('.mcf-en').remove()";
+                string s9 = "$('.right-rail-wrapper WikiaRail').remove()";
+        
+
+
+
+
+
+
+
+
+                navegador.ExecuteScriptAsync(script);
+                navegador.ExecuteScriptAsync(script1);
+                navegador.ExecuteScriptAsync(script2);
+                navegador.ExecuteScriptAsync(s3);
+                navegador.ExecuteScriptAsync(s4);
+                navegador.ExecuteScriptAsync(id);
+                navegador.ExecuteScriptAsync("el.remove()");
+                navegador.ExecuteScriptAsync(s5);
+                navegador.ExecuteScriptAsync(s6);
+                navegador.ExecuteScriptAsync(s7);
+                navegador.ExecuteScriptAsync(s8);
+                navegador.ExecuteScriptAsync(s9);
+                navegador.ExecuteScriptAsync("var el = document.getElementById('ds_cpp')");
+                navegador.ExecuteScriptAsync("el.remove()");
+
+
+
+
+            }
+            catch 
+            {
+
+            }
+
         }
     }
 }

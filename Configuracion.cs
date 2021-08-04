@@ -12,6 +12,8 @@ using System.IO;
 using System.Xml;
 using System.Reflection;
 
+
+
 namespace SandBox
 {
     public partial class Configuracion : Form
@@ -91,28 +93,7 @@ namespace SandBox
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-
-                if (File.Exists("datos.xml"))
-                {
-                    Datos datos = Datos.LeerArchivo("datos.xml");
-
-                    textBoxAwake.Text = datos.Awakened;
-                    textBoxCompanion.Text = datos.Companion;
-                    textBoxExilence.Text = datos.Exilence;
-
-
-                }
-
-            }
-            catch (Exception exepcion)
-            {
-                MessageBox.Show("¡¡ERROR !!" + exepcion.Message);
-
-            }
-            */
+     
         
         }
 
