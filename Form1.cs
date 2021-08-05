@@ -258,12 +258,12 @@ namespace SandBox
 
         private void btnTrade_Click(object sender, EventArgs e)
         {
-            Navegar("https://www.pathofexile.com/trade/search/Ultimatum");
+            Navegar("https://www.pathofexile.com/trade/search/Expedition");
         }
 
         private void btnCurrency_Click(object sender, EventArgs e)
         {
-            Navegar("https://www.pathofexile.com/trade/exchange/Ultimatum");
+            Navegar("https://www.pathofexile.com/trade/exchange/Expedition");
         }
 
         private void btnNinja_Click(object sender, EventArgs e)
@@ -298,7 +298,7 @@ namespace SandBox
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
-            Navegar("https://www.poebuilds.net/guest-page");
+            Navegar("https://www.poebuilds.net/builds/witch/summon-reaper");
         }
 
         private void btnActos_Click(object sender, EventArgs e)
@@ -309,8 +309,8 @@ namespace SandBox
 
         private void btnLogros_Click(object sender, EventArgs e)
         {
-           // Navegar("https://docs.google.com/document/d/1a3CzrieUslQf2LPW2iaJnJfrYrIO1bqVsvafOgyabEo/edit?ts=60a5125a#heading=h.rvzr7fdpe4xu");
-            System.Diagnostics.Process.Start("microsoft-edge:https://docs.google.com/document/d/1a3CzrieUslQf2LPW2iaJnJfrYrIO1bqVsvafOgyabEo/edit?ts=60a5125a#heading=h.rvzr7fdpe4xu");
+           
+            System.Diagnostics.Process.Start("microsoft-edge:https://docs.google.com/document/d/1cX-9i2U4rW8hwmrkoj0ZjtzI8N-XZ7dIttihNhK4WOA/edit?usp=sharing");
         }
 
         private void btnTab_Click(object sender, EventArgs e)
