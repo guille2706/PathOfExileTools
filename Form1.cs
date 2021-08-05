@@ -15,6 +15,9 @@ using System.Diagnostics;
 using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 using mshtml;
+using System.Net;
+using System.IO;
+using System.Collections;
 
 namespace SandBox
 {
@@ -75,7 +78,8 @@ namespace SandBox
             panelNavegador.Controls.Add(navegador);
             navegador.AddressChanged += Chrome_AddressChanged;
 
-            
+            //probando evento si termino de cargar la pagina
+            navegador.LoadingStateChanged += Pagina_Cargada;
            
 
             //agregando menu contextual
@@ -86,6 +90,15 @@ namespace SandBox
 
 
         }
+
+        private void Pagina_Cargada(object sender, LoadingStateChangedEventArgs e)
+        {
+            if (e.IsLoading == false) 
+            {
+                QuitarPublicidad();
+            }
+        }
+
         private void Chrome_AddressChanged(object sender, AddressChangedEventArgs e) // evento que detecta los cambios en la url
         {
             this.Invoke(new MethodInvoker(() =>
@@ -135,22 +148,10 @@ namespace SandBox
 
                 // Quitar la publicidad
 
-                /*
-
-
-                HtmlWeb web = new HtmlWeb();
-                HtmlDocument document = web.Load("https://pathofexile.fandom.com/wiki/Vendor_recipe_system"); //carga la pagina en la variable document
-
-                var htmlBody = document.DocumentNode.SelectSingleNode("//div[@id='ds_ad_container']");
-                HtmlNode nodo = htmlBody;
-                nodo.RemoveAll();
-
-                // HtmlNode nodos = document.DocumentNode.SelectNodes("//div[@id='rail-boxad-wrapper']").First();
-
-
-
-                */
-
+                if (navegador.IsLoading == false) 
+                {
+                    QuitarPublicidad();
+                }
 
                 //fin de quitar la publicidad
 
@@ -347,55 +348,55 @@ namespace SandBox
         {
             // bloquear publicidad
 
-            InyectarJava();
+            QuitarPublicidad();
         }
 
-        private void InyectarJava()
+        private void QuitarPublicidad()
         {
             try
             {
+
+             
+
+
+
                 //Utilizao Jquery, creo que por eso usa el signo $, lo que hago aca es cargar
                 // la linea de comando en un string y luego ejecutarla (es una posibilidad de Cefsharp: executeScriptAsync
-                string script = "$('.top-ads-container').remove()";
-               
-                // otra publicidad:
-                string script1 = "$('.rail-module').remove()";
               
-                string script2 = "$('.WikiaBarWrapper').remove()";
-               
-                string s3 = "$('.notifications-placeholder').remove()";
-                string s4 = "$('.ds_hidemute').remove()";
-                string s5 = "$('.mcf-wrapper').remove()";
-                string id = "var el = document.getElementById('google_center_div')";
-                string s6 = "$('.dm-ad-content').remove()";
-                string s7 = "$('.gpt-ad hide)´.remove()";
-                string s8 = "$('.mcf-en').remove()";
-                string s9 = "$('.right-rail-wrapper WikiaRail').remove()";
-        
+
+                String directorio = Environment.CurrentDirectory + @"\Ids.txt";
+                
+                string[] listado = File.ReadAllLines(directorio);
 
 
+                // remover por ID
+
+                foreach (string idtexto in listado)
+                {
+                    string elementobyid = "var elemento = document.getElementById('" + idtexto + "')";
+                    
+                    string docReadyRem = "$(document).ready(elemento.remove())";
+                    navegador.ExecuteScriptAsync(elementobyid);
+                    navegador.ExecuteScriptAsync(docReadyRem);
+                       
+
+                }
+
+                // remover por Class name
+
+                String directorioclases = Environment.CurrentDirectory + @"\ClassNames.txt";
+                string[] listadoClases = File.ReadAllLines(directorioclases);
 
 
+                foreach (string classtexto in listadoClases)
+                {
+                   
+                    string scriptClases = "$('." + classtexto + "').remove()";
+                    //esperar que el documento este listo
+                    string documentoReady = "$(document).ready("+scriptClases+")";
+                    navegador.ExecuteScriptAsync(documentoReady);
 
-
-
-
-                navegador.ExecuteScriptAsync(script);
-                navegador.ExecuteScriptAsync(script1);
-                navegador.ExecuteScriptAsync(script2);
-                navegador.ExecuteScriptAsync(s3);
-                navegador.ExecuteScriptAsync(s4);
-                navegador.ExecuteScriptAsync(id);
-                navegador.ExecuteScriptAsync("el.remove()");
-                navegador.ExecuteScriptAsync(s5);
-                navegador.ExecuteScriptAsync(s6);
-                navegador.ExecuteScriptAsync(s7);
-                navegador.ExecuteScriptAsync(s8);
-                navegador.ExecuteScriptAsync(s9);
-                navegador.ExecuteScriptAsync("var el = document.getElementById('ds_cpp')");
-                navegador.ExecuteScriptAsync("el.remove()");
-
-
+                }
 
 
             }
