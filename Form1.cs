@@ -78,6 +78,15 @@ namespace SandBox
             panelNavegador.Controls.Add(navegador);
             navegador.AddressChanged += Chrome_AddressChanged;
 
+            Navegar("https://www.pathofexile.com/trade");
+           
+
+                    
+           
+
+
+         
+
             //probando evento si termino de cargar la pagina
             navegador.LoadingStateChanged += Pagina_Cargada;
            
@@ -85,6 +94,7 @@ namespace SandBox
             //agregando menu contextual
 
             navegador.MenuHandler = new MyManejadorDeMenus();
+            
 
 
 
@@ -375,7 +385,7 @@ namespace SandBox
                 {
                     string elementobyid = "var elemento = document.getElementById('" + idtexto + "')";
                     
-                    string docReadyRem = "$(document).ready(elemento.remove())";
+                    string docReadyRem = "$(document).ready(elemento.parentNode.removeChild(elemento))";
                     navegador.ExecuteScriptAsync(elementobyid);
                     navegador.ExecuteScriptAsync(docReadyRem);
                        
