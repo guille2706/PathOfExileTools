@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Reflection;
+using CefSharp;
 
 
 
@@ -210,5 +211,18 @@ namespace SandBox
 
         }
 
+        
+
+        private void btn_borrarCookies_Click(object sender, EventArgs e)
+        {
+            var t = Task.Run(async () => {
+                try
+                {
+                    var cookieManager = Cef.GetGlobalCookieManager();
+                    await cookieManager.DeleteCookiesAsync();
+                }
+                catch { }
+            }    );
+        }
     }
 }

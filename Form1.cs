@@ -416,5 +416,19 @@ namespace SandBox
             }
 
         }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            //heists
+            Navegar("https://drive.google.com/file/d/1Xd65g84ADLWEkXbrGv2RjWUNxzaijGPm/view?usp=sharing");
+
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            //Mafia
+            Navegar("https://drive.google.com/file/d/11Uop2HWbpbTpHhihrIlPj6qcmQ7KDVa1/view?usp=sharing");
+        }
     }
 }
